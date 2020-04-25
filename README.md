@@ -19,14 +19,31 @@
 <details>
   <summary>Prerequisites</summary>
   <ul>
-    <li>Verify /vault directory exists and is writable</li>
-    <li>For Windoes 10 Home users</li>
-      <ul>
-        <li>Docker toolbox</li>
-        <li>docker-cli (`choco install docker-cli` - using prompt)</li>
-        <li>docker-compose (`choco install docker-compose` - using prompt)</li>
-      </ul>
+    <li>Install Docker (version 19.03.xx or higher)</li>
+		<ul>
+			<li>Windows 10 64bit or higher</li>
+				<ul>
+					<li>Docker Desktop on Windows - <a href='https://docs.docker.com/docker-for-windows/install/'>link</a></li>
+				</ul>
+			<li>Windows 10 32bit or lower</li>
+				<ul>
+					<li>Docker Toolbox on Windows - <a href='https://docs.docker.com/toolbox/toolbox_install_windows/'>link</a></li>
+				</ul>
+			<li>Linux distros</li>
+				<ul>
+					<li>Docker Engine - follow instructions by your distro <a href='https://docs.docker.com/engine/install/'>here</a></li>
+					<li>Docker Compose - follow instructions by your distro <a href='https://docs.docker.com/compose/install/'>here</a></li>
+				</ul>
+		</ul>
   </ul>
+  
+  <summary>Spin DEV environment</summary>
+  Execute the following (Windows: run it from Git-Bash or similar and not from Command Prompt):
+1. `openssl req -x509 -newkey rsa:4096 -nodes -out web_s2i/cert.pem -keyout web_s2i/key.pem -days 365 -subj "/C=IL/ST=Gush-Dan/L=Tel-Aviv/O=DevOps Loft/OU=''/CN=''"`
+2. `docker build -t devopsloft/spinner .` (don't forget the dot at the end)
+3. `docker-compose build`
+4. `docker run --rm -d -v /var/run/docker.sock:/var/run/docker.sock devopsloft/spinner:latest`
+5. Browse: `http://localhost:5000/`
 </details>
 
 #### STAGE environment
