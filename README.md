@@ -36,7 +36,9 @@
 				</ul>
 		</ul>
   </ul>
+</details>
   
+<details>
   <summary>Spin DEV environment</summary>
   Execute the following (Windows: run it from Git-Bash or similar and not from Command Prompt):
 1. `openssl req -x509 -newkey rsa:4096 -nodes -out web_s2i/cert.pem -keyout web_s2i/key.pem -days 365 -subj "/C=IL/ST=Gush-Dan/L=Tel-Aviv/O=DevOps Loft/OU=''/CN=''"`
